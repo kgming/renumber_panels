@@ -7,7 +7,7 @@ function renumberPanels() {
   const PANEL_HEADING_STYLE = DocumentApp.ParagraphHeading.HEADING4
 
   // Matches paragraphs like "Page", "Page 5", or "Page 2 (8 Panels)"
-  const PAGE_RE = "^Page( \\d+)?( \\(\\d+ Panels\\))?$";
+  const PAGE_RE = "^Page( \\d+)?( \\(\\d+ Panels?\\))?$";
   // Matches paragraphs like "Panel" or "Panel 17"
   const PANEL_RE = "^Panel( \\d+)?$";
 
@@ -32,7 +32,11 @@ function renumberPanels() {
       panelCount++;
       curPage.setText(`Page ${pageCount}`);
       if (INCLUDE_PANEL_COUNT_ON_PAGE) {
-        curPage.appendText(` (${panelCount} Panels)`)
+        var panelsLabel = "Panel"
+        if (panelCount !== 1) {
+          panelsLabel += "s"
+        }
+        curPage.appendText(` (${panelCount} ${panelsLabel})`)
       };
       p.setText(`Panel ${panelCount}`);
       if (PANEL_HEADING_STYLE) {
