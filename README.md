@@ -2,7 +2,7 @@
 
 This is a quick and dirty Google Docs script to renumber comics script pages and panels.
 
-To use this, click Extensions > Apps Script on your Google Doc and paste the script in (renumberPanels.js) into the editor. Then click Run.
+To use this, click Extensions > Apps Script on your Google Doc and paste the script in (renumberPanels.gs) into the editor. Then click Run.
 
 It will look for page paragraphs like these:
 
